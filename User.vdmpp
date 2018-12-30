@@ -2,45 +2,58 @@ class User
 
 types
       public String = seq1 of char;
-      public Sex = <M> | <F>;
       public Type = <Individual> | <Manager> ;
-    
       
+values
+-- TODO Define values here
+    
 instance variables
      
-      private id: nat;
-      private name: String;
-      private sex: Sex;
+     -- private id: nat;
+      private username: String;
       private type: Type;
+      email: String;
+      phonenumber: nat;
    
       
  operations
  
-      -- Users constructor 
-    public User: String * Sex * Type  ==> User
-		User(nameU,sexU,typeU) == (
-						name := nameU;
-						sex := sexU;
+ --User constructor, initializes the user variables.
+public User: String * Type * String * nat  ==> User
+User(usernameU,typeU,emailU, phoneU) == (
+						username := usernameU;
 						type := typeU;
-					
+						email := emailU;
+						phonenumber := phoneU;
+						
 );
 
+--Returns the user name		
+				pure public getUsername: () ==> seq of char
+						getUsername()  ==
+						return username;
+						
+--Returns the user email				
+			pure public getEmail: () ==> seq of char
+				getEmail()  ==
+				return email;
+			
+--Rerturns the user phone number				
+			pure public getPhoneNumber: () ==> nat
+				getPhoneNumber()  ==
+				return phonenumber;
 
-      --users operations
-		 -- get all users
-	pure public getUsers : () ==> set of User
-		getUsers() ==
-				return user;
+
+functions
+  
+ --Verifies if two users are the same
+ 
+public equals : User * User -> bool
+equals(user1, user2) ==
+			user1.username = user2.username;
       
     
-values
--- TODO Define values here
-instance variables
--- TODO Define instance variables here
-operations
--- TODO Define operations here
-functions
--- TODO Define functiones here
 traces
 -- TODO Define Combinatorial Test Traces here
+
 end User
