@@ -6,6 +6,7 @@ values
 instance variables
 	private location: String;
 	products: seq of Product;
+	
 operations
 	public Store(storeLocation: String) s: Store ==
 		is not yet specified
