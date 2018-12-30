@@ -1,14 +1,30 @@
 class Product
+
 types
--- TODO Define types here
-values
--- TODO Define values here
+	public ProductName = seq1 of char;
+	public ProductPrice = nat1; -- in cents
+
 instance variables
--- TODO Define instance variables here
+	/* Tip: variables are declared public to facilitate queries */
+	public name: ProductName;
+	public price: ProductPrice;
+	public quantityInStock : nat := 0;
+	
 operations
--- TODO Define operations here
-functions
--- TODO Define functiones here
-traces
--- TODO Define Combinatorial Test Traces here
-end Product
+	public Product : ProductName * ProductPrice ==> Product
+	Product(nm, pr) == (
+		name := nm;
+		price := pr;
+		return self
+	);
+		
+	public removeFromStock: nat ==> () 
+	removeFromStock(qty) ==
+		quantityInStock := quantityInStock - qty
+	pre qty <= quantityInStock;
+	
+	public addToStock: nat ==> () 
+	addToStock(qty) ==
+		quantityInStock := quantityInStock + qty;
+
+end Product 

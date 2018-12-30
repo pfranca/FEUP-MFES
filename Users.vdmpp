@@ -1,0 +1,46 @@
+class Users
+
+types
+      public String = seq1 of char;
+      public Sex = <M> | <F>;
+      public Type = <Individual> | <Manager> ;
+    
+      
+instance variables
+     
+      private id: nat;
+      private name: String;
+      private sex: Sex;
+      private type: Type;
+   
+      
+ operations
+ 
+      -- Users constructor 
+    public Users: String * Sex * Type  ==> Users
+		Users(nameU,sexU,typeU) == (
+						name := nameU;
+						sex := sexU;
+						type := typeU;
+					
+);
+
+
+      --users operations
+		 -- get all users
+	pure public getUsers : () ==> set of User
+		getUsers() ==
+				return users;
+      
+    
+values
+-- TODO Define values here
+instance variables
+-- TODO Define instance variables here
+operations
+-- TODO Define operations here
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end Users
