@@ -12,14 +12,34 @@ instance variables
       stores: set of Store := {};
       
 operations
---Returns all the users in Hokify	
- 	pure public getUsers: () ==> set of User
-		getUsers() ==
- 		return users;
+
 --Returns all the job offers in Hokify		
 	pure public getStores: () ==> set of Store
 		getStores()  ==
 		return stores; 		
+
+--Returns all the users in ShopAdvizor	
+ 	pure public getUsers: () ==> set of User
+			getUsers() ==
+			return users;
+			
+--Adds user to ShopAdvizor 			
+ 	public addUser :User ==> ()
+		addUser(u) == 
+		users := users union {u}
+			pre not exists user in set users & User`equals(user, u)
+		post u in set users;
+		
+--Removes user from ShopAdvizor				
+	public removeUser : User ==> ()
+		removeUser(u) ==
+		(
+			for all user in set users do
+				if User`equals(user, u) 
+				then users := users \ {user};
+		)
+						pre exists user in set users & User`equals(user, u)
+		post not exists user in set users & User`equals(user, u);
 
 
 functions
