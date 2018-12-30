@@ -8,32 +8,19 @@ values
 -- TODO Define values here
 instance variables
 -- TODO Define instance variables here
-      users: set of User;
-      stores: set of Store;
+      users: set of User := {};
+      stores: set of Store := {};
       
 operations
--- TODO Define operations here
-    /*
-	Pre:
-	- Given client isn't nil
-	Post:
-	- New client is added to the system
-	*/
-	addClient(c: User) ==
-		is not yet specified
-		pre c <> nil
-		post c in set users;
-		
-	/*
-	Pre:
-	- Given store isn't nil
-	Post:
-	- New store is added to the system
-	*/
-	addStore(s: Store) ==
-		is not yet specified
-		pre s <> nil
-post s in set stores;
+--Returns all the users in Hokify	
+ 	pure public getUsers: () ==> set of User
+		getUsers() ==
+ 		return users;
+--Returns all the job offers in Hokify		
+	pure public getStores: () ==> set of Store
+		getStores()  ==
+		return stores; 		
+
 
 functions
 -- TODO Define functiones here
