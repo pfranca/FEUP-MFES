@@ -1,3 +1,6 @@
+/* Main class where all interactions will pass through.
+*/
+
 class App
 types
 -- TODO Define types here
@@ -5,8 +8,33 @@ values
 -- TODO Define values here
 instance variables
 -- TODO Define instance variables here
+      users: set of User;
+      stores: set of Store;
+      
 operations
 -- TODO Define operations here
+    /*
+	Pre:
+	- Given client isn't nil
+	Post:
+	- New client is added to the system
+	*/
+	addClient(c: User) ==
+		is not yet specified
+		pre c <> nil
+		post c in set users;
+		
+	/*
+	Pre:
+	- Given store isn't nil
+	Post:
+	- New store is added to the system
+	*/
+	addStore(s: Store) ==
+		is not yet specified
+		pre s <> nil
+post s in set stores;
+
 functions
 -- TODO Define functiones here
 traces
