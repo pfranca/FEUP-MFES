@@ -1,6 +1,38 @@
 class User
+
 types
--- TODO Define types here
+      public String = seq1 of char;
+      public Sex = <M> | <F>;
+      public Type = <Individual> | <Manager> ;
+    
+      
+instance variables
+     
+      private id: nat;
+      private name: String;
+      private sex: Sex;
+      private type: Type;
+   
+      
+ operations
+ 
+      -- Users constructor 
+    public User: String * Sex * Type  ==> User
+		User(nameU,sexU,typeU) == (
+						name := nameU;
+						sex := sexU;
+						type := typeU;
+					
+);
+
+
+      --users operations
+		 -- get all users
+	pure public getUsers : () ==> set of User
+		getUsers() ==
+				return user;
+      
+    
 values
 -- TODO Define values here
 instance variables
