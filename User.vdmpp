@@ -19,20 +19,20 @@ instance variables
  operations
  
  --User constructor, initializes the user variables.
-public User: String * Type * String * nat  ==> User
-User(usernameU,typeU,emailU, phoneU) == (
-						username := usernameU;
-						type := typeU;
-						email := emailU;
-						phonenumber := phoneU;
-						
+		public User: String * Type * String * nat  ==> User
+		User(usernameU,typeU,emailU, phoneU) == (
+				username := usernameU;
+				type := typeU;
+				email := emailU;
+				phonenumber := phoneU;
+				
 );
 
 --Returns the user name		
-				pure public getUsername: () ==> seq of char
-						getUsername()  ==
-						return username;
-						
+			pure public getUsername: () ==> seq of char
+				getUsername()  ==
+				return username;
+					
 --Returns the user email				
 			pure public getEmail: () ==> seq of char
 				getEmail()  ==
@@ -42,6 +42,7 @@ User(usernameU,typeU,emailU, phoneU) == (
 			pure public getPhoneNumber: () ==> nat
 				getPhoneNumber()  ==
 				return phonenumber;
+				
 
 
 functions

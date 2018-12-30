@@ -13,10 +13,27 @@ instance variables
       
 operations
 
---Returns all the job offers in Hokify		
+--Returns all the stores in ShopAdvizor
 	pure public getStores: () ==> set of Store
 		getStores()  ==
 		return stores; 		
+		
+	public addStore :Store ==> ()
+		addStore(s) == 
+		stores := stores union {s}
+			pre not exists store in set stores & Store`equals(store, s)
+		post s in set stores;
+		
+	public removeStore : Store ==> ()
+		removeStore(s) ==
+		(
+			for all store in set stores do
+				if Store`equals(store, s) 
+				then stores := stores \ {store};
+		)
+						pre exists store in set stores & Store`equals(store, s)
+		post not exists store in set stores & Store`equals(store, s);
+	
 
 --Returns all the users in ShopAdvizor	
  	pure public getUsers: () ==> set of User
