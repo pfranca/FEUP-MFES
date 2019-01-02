@@ -12,7 +12,13 @@ operations
      	 ( 
       
    				 dcl u1 : User := new User("user1",<Individual>,"gmail",123);
-           assert(u1.getUsername() = "user1");
+   				 dcl r1 : Review := new Review(u1,"aaaaa",5);
+   				 dcl r2 : Review := new Review(u1,"bbbbb",2);
+   				 dcl p1 : Product := new Product("Artigo1",111);
+   				 p1.addReview(r1);
+   				 assert(p1.getRating() = 5);
+   				 p1.addReview(r2);
+           assert(p1.getRating() = 3.5);
       
       );
       
