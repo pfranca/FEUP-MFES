@@ -1,0 +1,22 @@
+class ProductTests  is subclass of Tests
+types
+-- TODO Define types here
+values
+-- TODO Define values here
+instance variables
+-- TODO Define instance variables here
+operations
+-- TODO Define operations here
+    private devTest: () ==> ()
+      devTest() ==
+     	 ( 
+      
+   				 dcl u1 : User := new User("user1",<Individual>,"gmail",123);
+           assert(u1.getUsername() = "user1");
+      
+      );
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end ProductTests
