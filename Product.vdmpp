@@ -48,8 +48,14 @@ instance variables
   	  pure public getRating: () ==> rat
 			getRating() ==
 			return rating;
+			
+			
+functions
+
+public equals : Product * Product -> bool
+equals(product1, product2) ==
+			product1.name = product2.name;
 		
 	
-   
-
+  
 end Product 

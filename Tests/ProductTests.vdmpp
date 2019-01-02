@@ -12,16 +12,20 @@ operations
      	 ( 
       
    				 dcl u1 : User := new User("user1",<Manager>,"gmail",123);
+   				 dcl u2 : User := new User("userdwd1",<Manager>,"gmail",123);
    				 dcl r1 : Review := new Review(u1,"aaaaa",5);
    				 dcl r2 : Review := new Review(u1,"bbbbb",2);
    				 dcl p1 : Product := new Product("Artigo1",111);
+   				 dcl p2 : Product := new Product("Artigo2",111);
    				 dcl s1 : Store := new Store(u1,"Store1");
    				 dcl app1 : App := new App();
    				 p1.addReview(r1);
    				 assert(p1.getRating() = 5);
    				 p1.addReview(r2);
            assert(p1.getRating() = 3.5);
-          app1.addStore(s1);
+           app1.addStore(s1);
+           s1.addProduct(p1,u2);
+           s1.addProduct(p2,u1);
            
       
       );

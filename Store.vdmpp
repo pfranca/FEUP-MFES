@@ -16,7 +16,15 @@ operations
 		owner := ownerS;
 	)
 	
-	pre ownerS.getType() = <Manager>
+	pre ownerS.getType() = <Manager>;
+	
+	
+	--Add Products 
+	public addProduct :Product * User ==> ()
+		addProduct(p,u) == 
+		products := products union {p}
+		pre User`equals(u,self.owner) and not exists product in set products & Product`equals(product, p) 
+		post p in set products;
 	
 functions
 -- TODO Define functiones here
