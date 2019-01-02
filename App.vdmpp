@@ -21,7 +21,7 @@ operations
 	public addStore :Store ==> ()
 		addStore(s) == 
 		stores := stores union {s}
-			pre not exists store in set stores & Store`equals(store, s)
+			pre not exists store in set stores & Store`equals(store, s) 
 		post s in set stores;
 		
 	public removeStore : Store ==> ()

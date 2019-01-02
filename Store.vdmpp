@@ -6,13 +6,17 @@ values
 instance variables
 	private StoreName: String;
 	products: set of Product := {};
+	public owner: User;
 	--products: seq of Product;
 	
 operations
-  public Store: String ==> Store
-  Store(sn) == (
+  public Store: User * String ==> Store
+  Store(ownerS,sn) == (
 		StoreName := sn;
-	);
+		owner := ownerS;
+	)
+	
+	pre ownerS.getType() = <Manager>
 	
 functions
 -- TODO Define functiones here

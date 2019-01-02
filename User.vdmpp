@@ -38,10 +38,15 @@ instance variables
 				getEmail()  ==
 				return email;
 			
---Rerturns the user phone number				
+--Returns the user phone number				
 			pure public getPhoneNumber: () ==> nat
 				getPhoneNumber()  ==
 				return phonenumber;
+		
+--Rerturns the user type			
+			pure public getType: () ==> Type
+				getType()  ==
+				return type;
 				
 
 
