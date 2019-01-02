@@ -5,7 +5,7 @@ values
 -- TODO Define values here
 instance variables
 	private StoreName: String;
-	
+	products: set of Product := {};
 	--products: seq of Product;
 	
 operations

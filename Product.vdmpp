@@ -1,32 +1,17 @@
 class Product
 
 types
-	public ProductName = seq1 of char;
-	public ProductPrice = nat1; -- in cents
-	public Rating = <R1> | <R2> | <R3> | <R4> | <R5>;
-
+		public ProductName = seq1 of char;
+		public ProductPrice = nat1; -- in cents
+		public Rating = <R1> | <R2> | <R3> | <R4> | <R5>;
+	
+		
 instance variables
 	/* Tip: variables are declared public to facilitate queries */
+	reviews: set of Review := {};
 	public name: ProductName;
 	public price: ProductPrice;
 	public quantityInStock : nat := 0;
 	store: Store;
-	
-operations
-	public Product : ProductName * ProductPrice ==> Product
-	Product(nm, pr) == (
-		name := nm;
-		price := pr;
-		return self
-	);
-		
-	public removeFromStock: nat ==> () 
-	removeFromStock(qty) ==
-		quantityInStock := quantityInStock - qty
-	pre qty <= quantityInStock;
-	
-	public addToStock: nat ==> () 
-	addToStock(qty) ==
-		quantityInStock := quantityInStock + qty;
 
 end Product 
