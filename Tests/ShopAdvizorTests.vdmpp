@@ -1,0 +1,42 @@
+class ShopAdvizorTests  is subclass of Tests
+types
+-- TODO Define types here
+values
+-- TODO Define values here
+instance variables
+-- TODO Define instance variables here
+   pedro : User := new User("Pedro",<Owner>,"pedro@gmail.com",925302024);
+   joana : User := new User("Joana",<Common>,"joana@gmail.com",915302024);
+   apple : Store := new Store(pedro,"Apple");
+   
+operations
+-- TODO Define operations here
+private testShopAdvizor: () ==> ()
+			testShopAdvizor() ==
+			(	--creates a store and verifies the parameters
+			 
+			  dcl shop : ShopAdvizor := new ShopAdvizor();
+			
+				shop.addStore(apple);
+			  assert(shop.getStores() = {apple});
+			--	assert(s.getProducts() = {});
+				--assert(s.getBestProduct() = );
+				--assert(s.getManagers() = {u});
+				--return all Products from Store
+				--Add Products to Store
+				--Add Managers to Store
+				
+);
+
+--runs the above tests
+	public runTests: () ==> ()
+		runTests() ==
+		(
+			testShopAdvizor();
+			
+);
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end ShopAdvizorTests

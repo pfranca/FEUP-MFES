@@ -2,14 +2,14 @@ class User
 
 types
       public String = seq1 of char;
-      public Type = <Individual> | <Manager> ;
+      public Type = <Common> | <Owner> ;
       
 values
 -- TODO Define values here
     
 instance variables
      
-     -- private id: nat;
+     
       private username: String;
       private type: Type;
       email: String;

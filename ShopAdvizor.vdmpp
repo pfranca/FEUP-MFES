@@ -1,7 +1,7 @@
 /* Main class where all interactions will pass through.
 */
 
-class App
+class ShopAdvizor
 types
 -- TODO Define types here
 values
@@ -18,12 +18,14 @@ operations
 		getStores()  ==
 		return stores; 		
 		
+	--Add Store from ShopAdvizor
 	public addStore :Store ==> ()
 		addStore(s) == 
 		stores := stores union {s}
 			pre not exists store in set stores & Store`equals(store, s) 
 		post s in set stores;
 		
+		--Remove Store from ShopAdvizor
 	public removeStore : Store ==> ()
 		removeStore(s) ==
 		(
@@ -63,4 +65,4 @@ functions
 -- TODO Define functiones here
 traces
 -- TODO Define Combinatorial Test Traces here
-end App
+end ShopAdvizor

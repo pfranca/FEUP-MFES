@@ -1,0 +1,40 @@
+class UserTests is subclass of Tests
+types
+-- TODO Define types here
+values
+-- TODO Define values here
+instance variables
+-- TODO Define instance variables here
+operations
+-- TODO Define operations here
+private testUserParams: () ==> ()
+			testUserParams() ==
+			(	--creates an user and verifies the parameters
+				dcl u : User := new User("Pedro",<Owner>,"pedro@gmail.com",925302024);
+				dcl u2 : User := new User("Joana",<Common>,"joana@gmail.com",915302024);
+				assert(u.getUsername() = "Pedro");
+				assert(u.getType() = <Owner>);
+				assert(u.getEmail() = "pedro@gmail.com");
+				assert(u.getPhoneNumber() = 925302024);
+				
+			
+				assert(u2.getUsername() = "Joana");
+				assert(u2.getType() = <Common>);
+				assert(u2.getEmail() = "joana@gmail.com");
+				assert(u2.getPhoneNumber() = 915302024);
+				
+);
+
+ --runs the above tests
+	public runTests: () ==> ()
+		runTests() ==
+		(
+			testUserParams();
+			
+);
+
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end UserTests

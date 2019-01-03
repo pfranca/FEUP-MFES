@@ -1,0 +1,40 @@
+class StoreTests is subclass of Tests
+types
+-- TODO Define types here
+values
+-- TODO Define values here
+instance variables
+-- TODO Define instance variables here
+operations
+-- TODO Define operations here
+private testStoreParams: () ==> ()
+			testStoreParams() ==
+			(	--creates a store and verifies the parameters
+			  dcl u : User := new User("Pedro",<Owner>,"pedro@gmail.com",925302024);
+				dcl s : Store := new Store(u,"Apple");
+				assert(s.getStoreName() = "Apple");
+				assert(s.getOwner() = "Pedro");
+				assert(s.getProducts() = {});
+				--assert(s.getBestProduct() = );
+				assert(s.getManagers() = {u});
+				--return all Products from Store
+				--Add Products to Store
+				--Add Managers to Store
+				
+			
+				
+);
+
+--runs the above tests
+	public runTests: () ==> ()
+		runTests() ==
+		(
+			testStoreParams();
+			
+);
+
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end StoreTests
