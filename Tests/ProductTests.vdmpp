@@ -13,8 +13,8 @@ operations
       
    				 dcl u1 : User := new User("user1",<Manager>,"gmail",123);
    				 dcl u2 : User := new User("userdwd1",<Manager>,"gmail",123);
-   				 dcl r1 : Review := new Review(u1,"aaaaa",5);
-   				 dcl r2 : Review := new Review(u1,"bbbbb",2);
+   				 dcl r1 : Review := new Review(u1,"aaaaa",5,mk_Review`Date(2019, 01, 03));
+   				 dcl r2 : Review := new Review(u1,"bbbbb",2,mk_Review`Date(2018, 01, 03));
    				 dcl p1 : Product := new Product("Artigo1",111);
    				 dcl p2 : Product := new Product("Artigo2",111);
    				 dcl s1 : Store := new Store(u1,"Store1");
