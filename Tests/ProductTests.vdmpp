@@ -24,8 +24,10 @@ operations
    				 p1.addReview(r2);
            assert(p1.getRating() = 3.5);
            app1.addStore(s1);
-           s1.addProduct(p1,u2);
+           s1.addProduct(p1,u1);
            s1.addProduct(p2,u1);
+          
+          
            
       
       );

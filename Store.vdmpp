@@ -7,6 +7,7 @@ instance variables
 	private StoreName: String;
 	products: set of Product := {};
 	public owner: User;
+
 	--products: seq of Product;
 	
 operations
@@ -19,6 +20,28 @@ operations
 	pre ownerS.getType() = <Manager>;
 	
 	
+	--Return all products from Store
+	 pure public getProducts: () ==> set of Product
+			getProducts() ==
+			return products;
+			
+	--Return best rated product from Store
+	    pure public getBestProduct: () ==> Product
+			getBestProduct() ==  (
+		(dcl best: rat := 0;
+		 dcl bestProd: Product;
+			for all prod in set products do(
+			if prod.getRating() > best then(
+				best := prod.getRating();
+				  bestProd := prod
+				)
+			);
+				return bestProd;
+		)
+	
+    );
+   
+			
 	--Add Products 
 	public addProduct :Product * User ==> ()
 		addProduct(p,u) == 
