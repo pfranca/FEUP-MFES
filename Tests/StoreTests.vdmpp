@@ -5,23 +5,42 @@ values
 -- TODO Define values here
 instance variables
 -- TODO Define instance variables here
+  pedro : User := new User("Pedro",<Owner>,"pedro@gmail.com",925302024);
+  iphone : Product := new Product("Iphone",1000);
+  ipad : Product := new Product("Ipad",500);
+  
 operations
 -- TODO Define operations here
 private testStoreParams: () ==> ()
 			testStoreParams() ==
-			(	--creates a store and verifies the parameters
-			  dcl u : User := new User("Pedro",<Owner>,"pedro@gmail.com",925302024);
-				dcl s : Store := new Store(u,"Apple");
+			(	--creates an empty store and verifies the parameters,if has no products and at least 1 manager = owner
+			 
+				dcl s : Store := new Store(pedro,"Apple");
+				
 				assert(s.getStoreName() = "Apple");
 				assert(s.getOwner() = "Pedro");
 				assert(s.getProducts() = {});
-				--assert(s.getBestProduct() = );
-				assert(s.getManagers() = {u});
-				--return all Products from Store
-				--Add Products to Store
-				--Add Managers to Store
+			  assert(s.getManagers() = {pedro});
+		
 				
-			
+);
+
+private testStoreProducts: () ==> ()
+			testStoreProducts() ==
+			(	--creates an empty store and adds and removes two products and checks if it was done correctly
+			 
+				dcl s : Store := new Store(pedro,"Apple");
+				
+				s.addProduct(iphone,pedro);
+				assert(s.getProducts() = {iphone});
+				s.addProduct(ipad,pedro);
+				assert(s.getProducts() = {iphone,ipad});
+			  s.removeProduct(ipad,pedro);
+			  assert(s.getProducts() = {iphone});
+			  s.removeProduct(iphone,pedro);
+			  assert(s.getProducts() = {});
+			  
+		
 				
 );
 
@@ -30,6 +49,7 @@ private testStoreParams: () ==> ()
 		runTests() ==
 		(
 			testStoreParams();
+			testStoreProducts();
 			
 );
 

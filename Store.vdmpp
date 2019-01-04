@@ -71,6 +71,17 @@ operations
 		pre u in set managers and not exists product in set products & Product`equals(product, p) 
 		post p in set products;
 		
+	--Removes product from Store				
+	public removeProduct : Product * User ==> ()
+		removeProduct(p,u) ==
+		(
+			for all product in set products do
+				if Product`equals(product, p) 
+				then products := products \ {product};
+		)
+						pre u in set managers and exists product in set products & Product`equals(product, p)
+		post not exists product in set products & Product`equals(product, p);
+		
 
   --Add Managers to Store	
  	public addManager :User * User ==> ()
