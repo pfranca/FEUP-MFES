@@ -1,7 +1,6 @@
 class Review
 
 types
--- TODO Define types here
     public String = seq1 of char;
     public Date :: year : nat1
 								   month: nat1
@@ -11,10 +10,8 @@ types
 		   then d.month < 12 and d.day <= [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31](d.month)
      else d.month < 12 and d.day <= [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31](d.month);
     
-values
--- TODO Define values here
+
 instance variables
--- TODO Define instance variables here
    public user: User;
    public content: String;
    public rating: nat1;
@@ -22,7 +19,6 @@ instance variables
    
    
 operations
--- TODO Define operations here
 
  --Review constructor, initializes the review variables.
   public Review: User * String * nat1 * Date  ==> Review
@@ -34,19 +30,28 @@ operations
   	 
   	 );
   	 
-  	 --Returns rating of review
-  	  pure public getRating: () ==> nat1
-				getRating() ==
-				return rating;
-			
-			-- Returns review Date
-		  pure public getReviewDate: () ==> Date
-        getReviewDate()  ==
-				return reviewDate;
+ 	--Returns the user that posted the review
+  pure public getUser: () ==> User
+		getUser() ==
+		return user;
+	 
+ 	--Returns the content of the review
+  pure public getContent: () ==> String
+		getContent() ==
+		return content;
+	 
+ 	--Returns rating of review
+  pure public getRating: () ==> nat1
+		getRating() ==
+		return rating;
+		
+	-- Returns review Date
+  pure public getReviewDate: () ==> Date
+    getReviewDate()  ==
+		return reviewDate;
 			
   	 
 functions
 -- TODO Define functiones here
-traces
--- TODO Define Combinatorial Test Traces here
+
 end Review

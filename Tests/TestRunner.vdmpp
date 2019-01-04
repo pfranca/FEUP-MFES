@@ -9,13 +9,13 @@ public static runTests : () ==> ()
 			dcl userTests : UserTests := new UserTests();
 			--dcl storeTests : StoreTests := new StoreTests();
 			dcl productTests : ProductTests := new ProductTests();
-			--dcl reviewTests : ReviewTests := new ReviewTests();
+			dcl reviewTests : ReviewTests := new ReviewTests();
 			
 		  --shopadvizorTests.runTests();
 			userTests.runTests();
 			--storeTests.runTests();
 			productTests.runTests();
-			--reviewTests.runTests();
+			reviewTests.runTests();
 			
 	);
 
