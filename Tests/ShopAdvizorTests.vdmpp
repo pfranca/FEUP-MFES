@@ -1,17 +1,12 @@
 class ShopAdvizorTests  is subclass of Tests
-types
--- TODO Define types here
-values
--- TODO Define values here
+
 instance variables
--- TODO Define instance variables here
    pedro : User := new User("Pedro",<Owner>,"pedro@gmail.com",925302024);
    joana : User := new User("Joana",<Common>,"joana@gmail.com",915302024);
    apple : Store := new Store(pedro,"Apple");
    microsoft : Store := new Store(pedro,"Microsoft");
    
 operations
--- TODO Define operations here
 private testShopAdvizor: () ==> ()
 			testShopAdvizor() ==
 			(	   --verifies if an empty shopadvizor class has no users and no stores
@@ -69,6 +64,5 @@ testStores() ==
 );
 functions
 -- TODO Define functiones here
-traces
--- TODO Define Combinatorial Test Traces here
+
 end ShopAdvizorTests

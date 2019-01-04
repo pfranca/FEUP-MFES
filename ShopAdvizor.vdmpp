@@ -2,17 +2,12 @@
 */
 
 class ShopAdvizor
-types
--- TODO Define types here
-values
--- TODO Define values here
+
 instance variables
--- TODO Define instance variables here
       users: set of User := {};
       stores: set of Store := {};
       
 operations
-
 --Returns all the stores in ShopAdvizor
 	pure public getStores: () ==> set of Store
 		getStores()  ==
@@ -22,8 +17,8 @@ operations
 	public addStore :Store ==> ()
 		addStore(s) == 
 		stores := stores union {s}
-			pre not exists store in set stores & Store`equals(store, s) 
-		post s in set stores;
+	pre not exists store in set stores & Store`equals(store, s) 
+	post s in set stores;
 		
 		--Remove Store from ShopAdvizor
 	public removeStore : Store ==> ()
@@ -33,8 +28,8 @@ operations
 				if Store`equals(store, s) 
 				then stores := stores \ {store};
 		)
-						pre exists store in set stores & Store`equals(store, s)
-		post not exists store in set stores & Store`equals(store, s);
+	pre exists store in set stores & Store`equals(store, s)
+	post not exists store in set stores & Store`equals(store, s);
 	
 
 --Returns all the users in ShopAdvizor	
@@ -46,8 +41,8 @@ operations
  	public addUser :User ==> ()
 		addUser(u) == 
 		users := users union {u}
-			pre not exists user in set users & User`equals(user, u)
-		post u in set users;
+	pre not exists user in set users & User`equals(user, u)
+	post u in set users;
 		
 --Removes user from ShopAdvizor				
 	public removeUser : User ==> ()
@@ -57,12 +52,11 @@ operations
 				if User`equals(user, u) 
 				then users := users \ {user};
 		)
-						pre exists user in set users & User`equals(user, u)
-		post not exists user in set users & User`equals(user, u);
+	pre exists user in set users & User`equals(user, u)
+	post not exists user in set users & User`equals(user, u);
 
 
 functions
 -- TODO Define functiones here
-traces
--- TODO Define Combinatorial Test Traces here
+
 end ShopAdvizor
