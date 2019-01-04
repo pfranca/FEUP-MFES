@@ -3,8 +3,6 @@ class Store
 types
 public String = seq1 of char;
 
-values
--- TODO Define values here
 instance variables
 	private StoreName: String;
 	products: set of Product := {};
@@ -19,9 +17,8 @@ operations
   Store(ownerS,sn) == (
   	owner := ownerS;
 		StoreName := sn;
-		managers := managers union {self.owner};
+		managers := managers union {self.owner}; --owner is a manager
 	)
-	
 	pre ownerS.getType() = <Owner>
 	post self.owner in set managers;
 	
@@ -49,27 +46,26 @@ operations
 			return self.owner.User`getUsername();
 			
 	--Return the best rated product from Store
-	    pure public getBestProduct: () ==> Product
+    pure public getBestProduct: () ==> Product
 			getBestProduct() ==  (
-		(dcl best: rat := 0;
-		 dcl bestProd: Product;
-			for all prod in set products do(
-			if prod.getRating() > best then(
-				best := prod.getRating();
-				  bestProd := prod
-				)
-			);
-				return bestProd;
-		)
+			(dcl best: rat := 0;
+			 dcl bestProd: Product;
+				for all prod in set products do(
+				if prod.getRating() > best then(
+					best := prod.getRating();
+					  bestProd := prod
+					)
+				);
+					return bestProd;
+			)
 	    );
    
-	
 	--Add Products to Store
 	public addProduct :Product * User ==> ()
 		addProduct(p,u) == 
 		products := products union {p}
-		pre u in set managers and not exists product in set products & Product`equals(product, p) 
-		post p in set products;
+	pre u in set managers and not exists product in set products & Product`equals(product, p) 
+	post p in set products;
 		
 	--Removes product from Store				
 	public removeProduct : Product * User ==> ()
@@ -79,16 +75,16 @@ operations
 				if Product`equals(product, p) 
 				then products := products \ {product};
 		)
-						pre u in set managers and exists product in set products & Product`equals(product, p)
-		post not exists product in set products & Product`equals(product, p);
+	pre u in set managers and exists product in set products & Product`equals(product, p)
+	post not exists product in set products & Product`equals(product, p);
 		
 
-  --Add Managers from Store	
+  --Add Managers t Store	
  	public addManager :User * User ==> ()
 		addManager(m,o) == 
 		managers := managers union {m}
-			pre User`equals(o,self.owner) and not exists manager in set managers & User`equals(manager, m)
-		post m in set managers;
+	pre User`equals(o,self.owner) and not exists manager in set managers & User`equals(manager, m)
+	post m in set managers;
 		
   --Removes Manager from Store				
 	public removeManager : User * User ==> ()
@@ -98,17 +94,13 @@ operations
 				if User`equals(manager, m) 
 				then managers := managers \ {manager};
 		)
-						pre o in set managers and exists manager in set managers & User`equals(manager, m)
-		post not exists manager in set managers & User`equals(manager,m);
+	pre o in set managers and exists manager in set managers & User`equals(manager, m)
+	post not exists manager in set managers & User`equals(manager,m);
 	
 functions
--- TODO Define functiones here
-
  --Verifies if two Stores are the same
 public equals : Store * Store -> bool
 equals(store1, store2) ==
 			store1.StoreName = store2.StoreName;
 			
-traces
--- TODO Define Combinatorial Test Traces here
 end Store
