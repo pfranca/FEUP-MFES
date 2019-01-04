@@ -1,7 +1,7 @@
 class ProductTests is subclass of Tests
 
 instance variables
--- TODO Define instance variables here
+
   shopadvizor : ShopAdvizor := new ShopAdvizor();
   pedro : User := new User("Pedro",<Owner>,"pedro@gmail.com",925302024);
   joana : User := new User("Joana",<Common>,"joana@gmail.com",915302024);
@@ -12,7 +12,6 @@ instance variables
   review2: Review := new Review(pedro,"This is a review2",3,mk_Review`Date(2019, 01, 03));
    
 operations
--- TODO Define operations here
     private testProductParams: () ==> ()
       testProductParams() ==
      	 (  --creates a product and verifies the parameters.

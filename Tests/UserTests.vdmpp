@@ -1,12 +1,7 @@
 class UserTests is subclass of Tests
-types
--- TODO Define types here
-values
--- TODO Define values here
-instance variables
--- TODO Define instance variables here
+
 operations
--- TODO Define operations here
+
 private testUserParams: () ==> ()
 			testUserParams() ==
 			(	--creates an user and verifies the parameters
@@ -47,7 +42,5 @@ private testUserParams: () ==> ()
 );
 
 functions
--- TODO Define functiones here
-traces
--- TODO Define Combinatorial Test Traces here
+
 end UserTests

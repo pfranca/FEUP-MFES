@@ -7,13 +7,13 @@ public static runTests : () ==> ()
 	( 	--runs all the tests
 	    --dcl shopadvizorTests : ShopAdvizorTests := new ShopAdvizorTests();
 			dcl userTests : UserTests := new UserTests();
-			--dcl storeTests : StoreTests := new StoreTests();
+			dcl storeTests : StoreTests := new StoreTests();
 			dcl productTests : ProductTests := new ProductTests();
 			dcl reviewTests : ReviewTests := new ReviewTests();
 			
 		  --shopadvizorTests.runTests();
 			userTests.runTests();
-			--storeTests.runTests();
+			storeTests.runTests();
 			productTests.runTests();
 			reviewTests.runTests();
 			

@@ -1,11 +1,8 @@
 class StoreTests is subclass of Tests
-types
--- TODO Define types here
-values
--- TODO Define values here
+
 instance variables
--- TODO Define instance variables here
   pedro : User := new User("Pedro",<Owner>,"pedro@gmail.com",925302024);
+ 	quinhas : User := new User("Quinhas",<Owner>,"quinhas@gmail.com",915302067);
   joana : User := new User("Joana",<Common>,"joana@gmail.com",915302024);
   miguel : User := new User("Miguel",<Common>,"miguel@gmail.com",965302024);
   iphone : Product := new Product("Iphone",1000);
@@ -14,7 +11,7 @@ instance variables
   review2: Review := new Review(pedro,"This is a review2",3,mk_Review`Date(2019, 01, 03));
   
 operations
--- TODO Define operations here
+
 private testStoreParams: () ==> ()
 			testStoreParams() ==
 			(	--creates an empty store and verifies the parameters,if has no products and at least 1 manager = owner
@@ -86,6 +83,20 @@ private testBestProductStore: () ==> ()
 				
 			 
 	);
+	
+private testStoreEquality: () ==> ()
+			testStoreEquality() ==
+			(	--creates a2 stores with the same name and sees if their equal
+			 
+				dcl s1 : Store := new Store(pedro,"Apple");
+				dcl s2 : Store := new Store(quinhas,"Apple");
+			
+				assert(Store`equals(s1,s2));
+		
+				
+);
+	
+
 
 --runs the above tests
 	public runTests: () ==> ()
@@ -95,11 +106,11 @@ private testBestProductStore: () ==> ()
 			testStoreProducts();
 			testStoreManagers();
 			testBestProductStore();
+			testStoreEquality();
 			
 );
 
 functions
 -- TODO Define functiones here
-traces
--- TODO Define Combinatorial Test Traces here
+
 end StoreTests
