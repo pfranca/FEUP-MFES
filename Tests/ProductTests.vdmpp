@@ -1,8 +1,5 @@
 class ProductTests is subclass of Tests
-types
--- TODO Define types here
-values
--- TODO Define values here
+
 instance variables
 -- TODO Define instance variables here
   shopadvizor : ShopAdvizor := new ShopAdvizor();
@@ -27,7 +24,7 @@ operations
                
       );
       
-       private testProductReview: () ==> ()
+     private testProductReview: () ==> ()
       testProductReview() ==
      	 (   --creates a product, add two reviews to it and checks if it was done correctly. 
      	 
@@ -42,31 +39,39 @@ operations
       );
       
       
-         private testProductRating: () ==> ()
+     private testProductRating: () ==> ()
       testProductRating() ==
      	 (   --creates a product, add two reviews to it and checks the product rating. 
      	 
    				 dcl iphone : Product := new Product("Iphone",1000);
    				 
    				 assert(iphone.getRating() = 0);
-   				-- iphone.addReview(review1);
-   				-- iphone.addReview(review2);
-   				-- assert(iphone.getRating() = 3.5);
+   				 iphone.addReview(review1);
+   				 iphone.addReview(review2);
+   				 assert(iphone.getRating() = 4);
    				 
                
       );
       
-      public runTests: () ==> ()
+      private testProductEquality: () ==> ()
+      testProductEquality() ==
+     	 (   --creates 2 products with the same name and checks equality
+     	 
+   				 dcl p1 : Product := new Product("Iphone",111);
+   				 dcl p2 : Product := new Product("Iphone",222);
+   				 
+   				 assert(Product`equals(p1,p2));
+         
+      );
+      
+  public runTests: () ==> ()
 		runTests() ==
 		(
 			testProductParams();
 			testProductReview();
 			testProductRating();
+			testProductEquality();
 			
 );
 
-functions
--- TODO Define functiones here
-traces
--- TODO Define Combinatorial Test Traces here
 end ProductTests

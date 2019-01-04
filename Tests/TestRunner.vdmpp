@@ -8,13 +8,13 @@ public static runTests : () ==> ()
 	    --dcl shopadvizorTests : ShopAdvizorTests := new ShopAdvizorTests();
 			dcl userTests : UserTests := new UserTests();
 			--dcl storeTests : StoreTests := new StoreTests();
-		--	dcl productTests : ProductTests := new ProductTests();
+			dcl productTests : ProductTests := new ProductTests();
 			--dcl reviewTests : ReviewTests := new ReviewTests();
 			
 		  --shopadvizorTests.runTests();
 			userTests.runTests();
 			--storeTests.runTests();
-			--productTests.runTests();
+			productTests.runTests();
 			--reviewTests.runTests();
 			
 	);
