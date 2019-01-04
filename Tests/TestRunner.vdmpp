@@ -1,20 +1,15 @@
 class TestRunner
-types
--- TODO Define types here
-values
--- TODO Define values here
-instance variables
--- TODO Define instance variables here
+
 operations
--- TODO Define operations here
+
 public static runTests : () ==> ()
 	runTests() ==
 	( 	--runs all the tests
-	    dcl shopadvizorTests : ShopAdvizorTests := new ShopAdvizorTests();
+	    --dcl shopadvizorTests : ShopAdvizorTests := new ShopAdvizorTests();
 			dcl userTests : UserTests := new UserTests();
-			dcl storeTests : StoreTests := new StoreTests();
-			dcl productTests : ProductTests := new ProductTests();
-			dcl reviewTests : ReviewTests := new ReviewTests();
+			--dcl storeTests : StoreTests := new StoreTests();
+		--	dcl productTests : ProductTests := new ProductTests();
+			--dcl reviewTests : ReviewTests := new ReviewTests();
 			
 		  --shopadvizorTests.runTests();
 			userTests.runTests();
@@ -23,8 +18,5 @@ public static runTests : () ==> ()
 			--reviewTests.runTests();
 			
 	);
-functions
--- TODO Define functiones here
-traces
--- TODO Define Combinatorial Test Traces here
+
 end TestRunner

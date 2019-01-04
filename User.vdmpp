@@ -51,12 +51,14 @@ instance variables
 --Sets (changes) the user email			
 			public setEmail: String  ==> ()
 			setEmail(newEmail)  == 
-				email := newEmail;
+				email := newEmail
+			post email = newEmail;
 				
 --Sets (changes) the user phone number			
 			public setPhonenumber: nat  ==> ()
 			setPhonenumber(newPhonenumber)  == 
-				phonenumber := newPhonenumber;
+				phonenumber := newPhonenumber
+			post phonenumber = newPhonenumber;
 				
 
 

@@ -26,21 +26,21 @@ instance variables
 	
 	
 	--Returns name of Product
-  	  pure public getProductName: () ==> String
+	  pure public getProductName: () ==> String
 			getProductName() ==
 			return name;
 			
 			--Returns price of Product
-  	  pure public getProductPrice: () ==> ProductPrice
+	  pure public getProductPrice: () ==> ProductPrice
 			getProductPrice() ==
 			return price;
 	
 	  --Adds review to Product 			
  	 public addReview :Review ==> ()
 		addReview(r) ==  ( 
-		
+		--adds the new review to the Product
 		reviews := reviews union {r};	
-		
+		--updates the product rating based on the new review rating
 		(dcl aux: rat := 0;
 			for all rev in set reviews do(
 				aux := aux + rev.getRating()
@@ -58,7 +58,7 @@ instance variables
 			return reviews;	
 			
 		 --Returns rating of Product
-  	  pure public getRating: () ==> rat
+	  pure public getRating: () ==> rat
 			getRating() ==
 			return rating;
 			
@@ -66,9 +66,9 @@ instance variables
 functions
 
  --Verifies if two products are the same
-public equals : Product * Product -> bool
-equals(product1, product2) ==
-			product1.name = product2.name;
+	public equals : Product * Product -> bool
+		equals(product1, product2) ==
+		product1.name = product2.name;
 		
 	
   
