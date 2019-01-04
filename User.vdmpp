@@ -12,8 +12,8 @@ instance variables
      
       private username: String;
       private type: Type;
-      email: String;
-      phonenumber: nat;
+      private email: String;
+      private phonenumber: nat;
    
       
  operations
@@ -30,33 +30,42 @@ instance variables
 
 --Returns the user name		
 			pure public getUsername: () ==> seq of char
-				getUsername()  ==
+			getUsername()  ==
 				return username;
 					
 --Returns the user email				
 			pure public getEmail: () ==> seq of char
-				getEmail()  ==
+			getEmail()  ==
 				return email;
 			
 --Returns the user phone number				
 			pure public getPhoneNumber: () ==> nat
-				getPhoneNumber()  ==
+			getPhoneNumber()  ==
 				return phonenumber;
 		
 --Rerturns the user type			
 			pure public getType: () ==> Type
-				getType()  ==
+			getType()  ==
 				return type;
+				
+--Sets (changes) the user email			
+			public setEmail: String  ==> ()
+			setEmail(newEmail)  == 
+				email := newEmail;
+				
+--Sets (changes) the user phone number			
+			public setPhonenumber: nat  ==> ()
+			setPhonenumber(newPhonenumber)  == 
+				phonenumber := newPhonenumber;
 				
 
 
 functions
   
- --Verifies if two users are the same
- 
-public equals : User * User -> bool
-equals(user1, user2) ==
-			user1.username = user2.username;
+--Verifies if two users are the same
+			public equals : User * User -> bool
+			equals(user1, user2) ==
+				user1.username = user2.username;
       
     
 traces

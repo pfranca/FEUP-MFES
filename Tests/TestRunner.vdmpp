@@ -16,11 +16,11 @@ public static runTests : () ==> ()
 			dcl productTests : ProductTests := new ProductTests();
 			dcl reviewTests : ReviewTests := new ReviewTests();
 			
-		  shopadvizorTests.runTests();
+		  --shopadvizorTests.runTests();
 			userTests.runTests();
-			storeTests.runTests();
-			productTests.runTests();
-			reviewTests.runTests();
+			--storeTests.runTests();
+			--productTests.runTests();
+			--reviewTests.runTests();
 			
 	);
 functions

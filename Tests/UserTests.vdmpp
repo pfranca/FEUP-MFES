@@ -10,18 +10,31 @@ operations
 private testUserParams: () ==> ()
 			testUserParams() ==
 			(	--creates an user and verifies the parameters
-				dcl u : User := new User("Pedro",<Owner>,"pedro@gmail.com",925302024);
+				dcl u1 : User := new User("Pedro",<Owner>,"pedro@gmail.com",925302024);
 				dcl u2 : User := new User("Joana",<Common>,"joana@gmail.com",915302024);
-				assert(u.getUsername() = "Pedro");
-				assert(u.getType() = <Owner>);
-				assert(u.getEmail() = "pedro@gmail.com");
-				assert(u.getPhoneNumber() = 925302024);
+				dcl u3 : User := new User("Pedro", <Common>, "pedroButCommon@gmail.com", 123456789);
+				assert(u1.getUsername() = "Pedro");
+				assert(u1.getType() = <Owner>);
+				assert(u1.getEmail() = "pedro@gmail.com");
+				assert(u1.getPhoneNumber() = 925302024);
 				
 			
 				assert(u2.getUsername() = "Joana");
 				assert(u2.getType() = <Common>);
 				assert(u2.getEmail() = "joana@gmail.com");
 				assert(u2.getPhoneNumber() = 915302024);
+				
+				u1.setEmail("mudei@de.email");
+				u2.setPhonenumber(111111111);
+				
+				assert(u1.getEmail() = "mudei@de.email");
+				assert(u2.getPhoneNumber() = 111111111);
+				
+				--To teste user equality, eu set that 2 users are equal if they have the same username
+				--although it we do not allow to add to ShopAdvizor two users with the same username as a precondition
+				--Here we declared 2 users with the same username in order to test the equals function
+				assert(User`equals(u1,u3));
+				
 				
 );
 
