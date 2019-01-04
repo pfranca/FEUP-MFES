@@ -83,12 +83,23 @@ operations
 		post not exists product in set products & Product`equals(product, p);
 		
 
-  --Add Managers to Store	
+  --Add Managers from Store	
  	public addManager :User * User ==> ()
 		addManager(m,o) == 
 		managers := managers union {m}
 			pre User`equals(o,self.owner) and not exists manager in set managers & User`equals(manager, m)
 		post m in set managers;
+		
+  --Removes Manager from Store				
+	public removeManager : User * User ==> ()
+		removeManager(m,o) ==
+		(
+			for all manager in set managers do
+				if User`equals(manager, m) 
+				then managers := managers \ {manager};
+		)
+						pre o in set managers and exists manager in set managers & User`equals(manager, m)
+		post not exists manager in set managers & User`equals(manager,m);
 	
 functions
 -- TODO Define functiones here

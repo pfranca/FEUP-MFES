@@ -2,7 +2,7 @@ class User
 
 types
       public String = seq1 of char;
-      public Type = <Common> | <Owner> ;
+      public Type = <Common> | <Owner> ; -- Only Owner can create new Stores
       
 values
 -- TODO Define values here
