@@ -8,31 +8,63 @@ instance variables
    pedro : User := new User("Pedro",<Owner>,"pedro@gmail.com",925302024);
    joana : User := new User("Joana",<Common>,"joana@gmail.com",915302024);
    apple : Store := new Store(pedro,"Apple");
+   microsoft : Store := new Store(pedro,"Microsoft");
    
 operations
 -- TODO Define operations here
 private testShopAdvizor: () ==> ()
 			testShopAdvizor() ==
-			(	--creates a store and verifies the parameters
+			(	   --verifies if an empty shopadvizor class has no users and no stores
 			 
-			  dcl shop : ShopAdvizor := new ShopAdvizor();
+			  dcl shopadvizor : ShopAdvizor := new ShopAdvizor();
 			
-				shop.addStore(apple);
-			  assert(shop.getStores() = {apple});
-			--	assert(s.getProducts() = {});
-				--assert(s.getBestProduct() = );
-				--assert(s.getManagers() = {u});
-				--return all Products from Store
-				--Add Products to Store
-				--Add Managers to Store
+				assert(shopadvizor.getUsers() = {});
+			  assert(shopadvizor.getStores() = {});
 				
 );
+
+private testUsers : () ==> ()
+testUsers() ==
+(
+		--creates an empty shopadvizor class, adds and removes two users and checks if it was done correctly
+		dcl shopadvizor : ShopAdvizor := new ShopAdvizor();
+		
+		shopadvizor.addUser(pedro);
+		assert(shopadvizor.getUsers() = {pedro});
+		shopadvizor.addUser(joana);
+		assert(shopadvizor.getUsers() = {pedro, joana});
+		shopadvizor.removeUser(joana);
+		assert(shopadvizor.getUsers() = {pedro});
+		shopadvizor.removeUser(pedro);
+		assert(shopadvizor.getUsers() = {});
+		
+);
+
+private testStores : () ==> ()
+testStores() ==
+(
+		--creates an empty shopadvizor class, adds and removes two stores checks if it was done correctly
+		dcl shopadvizor : ShopAdvizor := new ShopAdvizor();
+		
+		shopadvizor.addStore(apple);
+		assert(shopadvizor.getStores() = {apple});
+		shopadvizor.addStore(microsoft);
+		assert(shopadvizor.getStores() = {apple, microsoft});
+		shopadvizor.removeStore(microsoft);
+		assert(shopadvizor.getStores() = {apple});
+		shopadvizor.removeStore(apple);
+		assert(shopadvizor.getStores() = {});
+		
+);
+
 
 --runs the above tests
 	public runTests: () ==> ()
 		runTests() ==
 		(
 			testShopAdvizor();
+			testUsers();
+			testStores();
 			
 );
 functions

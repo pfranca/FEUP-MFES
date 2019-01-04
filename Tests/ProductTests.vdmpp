@@ -5,22 +5,54 @@ values
 -- TODO Define values here
 instance variables
 -- TODO Define instance variables here
-   shop : ShopAdvizor := new ShopAdvizor();
-   pedro : User := new User("Pedro",<Owner>,"pedro@gmail.com",925302024);
-   joana : User := new User("Joana",<Common>,"joana@gmail.com",915302024);
-   apple : Store := new Store(pedro,"Apple");
-   review1: Review := new Review(pedro,"This is a review1",5,mk_Review`Date(2019, 01, 03));
-   review2: Review := new Review(pedro,"This is a review2",3,mk_Review`Date(2019, 01, 03));
+  shopadvizor : ShopAdvizor := new ShopAdvizor();
+  pedro : User := new User("Pedro",<Owner>,"pedro@gmail.com",925302024);
+  joana : User := new User("Joana",<Common>,"joana@gmail.com",915302024);
+  miguel : User := new User("Miguel",<Common>,"miguel@gmail.com",965302024);
+ -- iphone : Product := new Product("Iphone",1000);
+ -- ipad : Product := new Product("Ipad",500);
+  review1: Review := new Review(pedro,"This is a review1",5,mk_Review`Date(2019, 01, 03));
+  review2: Review := new Review(pedro,"This is a review2",3,mk_Review`Date(2019, 01, 03));
    
 operations
 -- TODO Define operations here
     private testProductParams: () ==> ()
       testProductParams() ==
-     	 ( 
-   				 dcl p1 : Product := new Product("Artigo1",100);
-   				 assert(p1.getProductName() = "Artigo1");
-   				 assert(p1.getProductPrice() = 100);
+     	 (  --creates a product and verifies the parameters.
+   				 dcl iphone : Product := new Product("Iphone",1000);
+   				 
+   				 assert(iphone.getProductName() = "Iphone");
+   				 assert(iphone.getProductPrice() = 1000);
    				
+               
+      );
+      
+       private testProductReview: () ==> ()
+      testProductReview() ==
+     	 (   --creates a product, add two reviews to it and checks if it was done correctly. 
+     	 
+   				 dcl iphone : Product := new Product("Iphone",1000);
+   				 
+   				 assert(iphone.getReviews() = {});
+   				 iphone.addReview(review1);
+   				 iphone.addReview(review2);
+   				 assert(iphone.getReviews() = {review1,review2});
+   				 
+               
+      );
+      
+      
+         private testProductRating: () ==> ()
+      testProductRating() ==
+     	 (   --creates a product, add two reviews to it and checks the product rating. 
+     	 
+   				 dcl iphone : Product := new Product("Iphone",1000);
+   				 
+   				 assert(iphone.getRating() = 0);
+   				-- iphone.addReview(review1);
+   				-- iphone.addReview(review2);
+   				-- assert(iphone.getRating() = 3.5);
+   				 
                
       );
       
@@ -28,6 +60,8 @@ operations
 		runTests() ==
 		(
 			testProductParams();
+			testProductReview();
+			testProductRating();
 			
 );
 
