@@ -25,8 +25,8 @@ private testUserParams: () ==> ()
 				assert(u1.getEmail() = "mudei@de.email");
 				assert(u2.getPhoneNumber() = 111111111);
 				
-				--To teste user equality, eu set that 2 users are equal if they have the same username
-				--although it we do not allow to add to ShopAdvizor two users with the same username as a precondition
+				--To teste user equality, we set that 2 users are equal if they have the same username
+				--although we do not allow to add to ShopAdvizor two users with the same username as a precondition
 				--Here we declared 2 users with the same username in order to test the equals function
 				assert(User`equals(u1,u3));
 				

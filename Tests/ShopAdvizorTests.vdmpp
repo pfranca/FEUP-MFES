@@ -3,8 +3,8 @@ class ShopAdvizorTests  is subclass of Tests
 instance variables
    pedro : User := new User("Pedro",<Owner>,"pedro@gmail.com",925302024);
    joana : User := new User("Joana",<Common>,"joana@gmail.com",915302024);
-   apple : Store := new Store(pedro,"Apple");
-   microsoft : Store := new Store(pedro,"Microsoft");
+   apple : Store := new Store(pedro,"Apple","Rua Ale Porto");
+   microsoft : Store := new Store(pedro,"Microsoft","Rua Alo Lisboa");
    
 operations
 private testShopAdvizor: () ==> ()
@@ -52,6 +52,43 @@ testStores() ==
 		
 );
 
+--------------------------- TEST CASES WITH INVALID INPUTS ---------------------------
+
+private testAddUsersInvalid : () ==> ()
+testAddUsersInvalid() ==
+(
+		--creates an empty shopadvizor class and tries to add 2 user with the same username
+		dcl shopadvizor : ShopAdvizor := new ShopAdvizor();
+		
+		shopadvizor.addUser(pedro);
+		assert(shopadvizor.getUsers() = {pedro});
+		shopadvizor.addUser(pedro);
+		
+		
+);
+
+private testRemoveUsersInvalid : () ==> ()
+testRemoveUsersInvalid() ==
+(
+		--creates an empty shopadvizor class and tries to delete an non existent user
+		dcl shopadvizor : ShopAdvizor := new ShopAdvizor();
+		
+		shopadvizor.removeUser(pedro);
+);
+
+
+
+private testStoresInvalid : () ==> ()
+testStoresInvalid() ==
+(
+		--creates an empty shopadvizor class and tries to add 2 stores with the same name
+		dcl shopadvizor : ShopAdvizor := new ShopAdvizor();
+		
+		shopadvizor.addStore(apple);
+		shopadvizor.addStore(apple);
+		
+);
+
 
 --runs the above tests
 	public runTests: () ==> ()
@@ -60,6 +97,10 @@ testStores() ==
 			testShopAdvizor();
 			testUsers();
 			testStores();
+			--TEST CASES WITH INVALID INPUTS--
+			--testAddUsersInvalid();
+			--testRemoveUsersInvalid();
+			--testStoresInvalid();
 			
 );
 functions

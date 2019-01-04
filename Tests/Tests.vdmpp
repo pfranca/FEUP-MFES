@@ -1,8 +1,12 @@
 class Tests
 
 operations
+
+-- Simulates assertion checking by reducing it to pre-condition checking.
+	-- If 'a' does not hold, a pre-condition violation will be signaled.
 protected assert : bool ==> ()
 				assert(a) == return 
 				pre a;
-
+				
+				
 end Tests

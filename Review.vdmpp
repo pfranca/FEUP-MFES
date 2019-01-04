@@ -29,6 +29,7 @@ operations
   	 reviewDate := rDate;
   	 
   	 );
+  	
   	 
  	--Returns the user that posted the review
   pure public getUser: () ==> User

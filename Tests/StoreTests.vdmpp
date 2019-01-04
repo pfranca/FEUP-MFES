@@ -16,10 +16,11 @@ private testStoreParams: () ==> ()
 			testStoreParams() ==
 			(	--creates an empty store and verifies the parameters,if has no products and at least 1 manager = owner
 			 
-				dcl s : Store := new Store(pedro,"Apple");
+				dcl s : Store := new Store(pedro,"Apple","Rua Ale 54 Porto");
 			
 				
 				assert(s.getStoreName() = "Apple");
+				assert(s.getStoreAddress() = "Rua Ale 54 Porto");
 				assert(s.getOwner() = "Pedro");
 				assert(s.getProducts() = {});
 			  assert(s.getManagers() = {pedro});
@@ -31,7 +32,7 @@ private testStoreProducts: () ==> ()
 			testStoreProducts() ==
 			(	--creates an empty store and adds and removes two products and checks if it was done correctly
 			 
-				dcl s : Store := new Store(pedro,"Apple");
+				dcl s : Store := new Store(pedro,"Apple","Rua Ale 54 Porto");
 				
 				assert(s.getProducts() = {});
 				s.addProduct(iphone,pedro);
@@ -51,7 +52,7 @@ private testStoreManagers: () ==> ()
 			testStoreManagers() ==
 			(	--creates an empty store,adds and removes two managers,checks if it was done correctly and if new managers can add products.
 			 
-				dcl s : Store := new Store(pedro,"Apple");
+				dcl s : Store := new Store(pedro,"Apple","Rua Ale 54 Porto");
 				
 			
 				assert(s.getManagers() = {pedro});
@@ -72,7 +73,7 @@ private testBestProductStore: () ==> ()
 			testBestProductStore() ==
 			(	--creates an empty store,adds two products,a review(with a rating) to each product, and checks what is the best product(better rating) in the store.
 			 
-				dcl s : Store := new Store(pedro,"Apple");
+				dcl s : Store := new Store(pedro,"Apple","Rua Ale 54 Porto");
 				
 				s.addProduct(iphone,pedro);
 				s.addProduct(ipad,pedro);
@@ -88,14 +89,80 @@ private testStoreEquality: () ==> ()
 			testStoreEquality() ==
 			(	--creates a2 stores with the same name and sees if their equal
 			 
-				dcl s1 : Store := new Store(pedro,"Apple");
-				dcl s2 : Store := new Store(quinhas,"Apple");
+				dcl s1 : Store := new Store(pedro,"Apple","Rua Ale 54 Porto");
+				dcl s2 : Store := new Store(quinhas,"Apple","Rua Ale 54 Porto");
 			
 				assert(Store`equals(s1,s2));
 		
 				
 );
+
+
 	
+--------------------------- TEST CASES WITH INVALID INPUTS ---------------------------
+
+private testStoreInvalid: () ==> ()
+			testStoreInvalid() ==
+			(	--Tries to create a store with an user that is not <Owner>
+			 
+				dcl s : Store := new Store(joana,"Apple","Rua Ale 54 Porto");
+		
+				assert(s.getOwner() = "Joana");
+							
+);
+
+private testBestProductInvalid: () ==> ()
+			testBestProductInvalid() ==
+			(	--creates an empty store and tries to get the best product when there are products are out-of-stock.
+			 
+				dcl s : Store := new Store(pedro,"Apple","Rua Ale 54 Porto");
+				
+				assert(s.getBestProduct() = iphone);
+	 
+	);
+	
+	
+	private testAddStoreManagersInvalid: () ==> ()
+			testAddStoreManagersInvalid() ==
+			(	-- Only owners can remove managers
+			 
+			  dcl s : Store := new Store(pedro,"Apple","Rua Ale 54 Porto");
+				
+					
+				assert(s.getManagers() = {pedro});
+				s.addManager(joana,pedro);
+				assert(s.getManagers() = {pedro,joana});
+				s.addManager(miguel,joana);
+			
+							
+);
+
+	private testRemoveStoreManagersInvalid: () ==> ()
+			testRemoveStoreManagersInvalid() ==
+			(	-- Only owners can add new managers
+			 
+			  dcl s : Store := new Store(pedro,"Apple","Rua Ale 54 Porto");
+			
+				
+			  assert(s.getManagers() = {pedro});
+				s.addManager(joana,pedro);
+				s.addManager(miguel,pedro);
+				s.removeManager(miguel,joana);
+							
+);
+
+
+private testRemoveStoreProductInvalid: () ==> ()
+			testRemoveStoreProductInvalid() ==
+			(	-- Cannot remove a product that doesent exist.
+			 
+			  dcl s : Store := new Store(pedro,"Apple","Rua Ale 54 Porto");
+					
+			  assert(s.getProducts() = {});
+				s.addProduct(iphone,pedro);
+				s.removeProduct(ipad,pedro);
+										
+);
 
 
 --runs the above tests
@@ -107,6 +174,12 @@ private testStoreEquality: () ==> ()
 			testStoreManagers();
 			testBestProductStore();
 			testStoreEquality();
+		-- TEST CASES WITH INVALID INPUTS --
+		--testStoreInvalid();
+		--testBestProductInvalid();
+		--testAddStoreManagersInvalid();
+		 --testRemoveStoreManagersInvalid();
+		
 			
 );
 

@@ -5,18 +5,23 @@ public String = seq1 of char;
 
 instance variables
 	private StoreName: String;
+	public StoreAddress: String;
 	products: set of Product := {};
 	managers: set of User := {};
+	reviews: set of Review := {};
 	public owner: User;
+	public rating : rat :=0;
+	
 
 
 	
 operations
 --Store constructor, initializes the store variables.
-  public Store: User * String ==> Store
-  Store(ownerS,sn) == (
+  public Store: User * String * String ==> Store
+  Store(ownerS,sn,sa) == (
   	owner := ownerS;
 		StoreName := sn;
+		StoreAddress := sa;
 		managers := managers union {self.owner}; --owner is a manager
 	)
 	pre ownerS.getType() = <Owner>
@@ -27,13 +32,18 @@ operations
 	--Return name of the store
 	 pure public getStoreName: () ==> String
 			getStoreName() ==
-			return self.StoreName;
-			
+			return StoreName;
+		
+	 	--Return address of the store
+	 pure public getStoreAddress: () ==> String
+			getStoreAddress() ==
+			return StoreAddress;	
 			
 	--Return all products from Store
 	 pure public getProducts: () ==> set of Product
 			getProducts() ==
 			return products;
+			
 			
 	--Return all managers from Store
 	 pure public getManagers: () ==> set of User
@@ -58,7 +68,9 @@ operations
 				);
 					return bestProd;
 			)
-	    );
+	    )
+	    pre  products <> {};
+	    
    
 	--Add Products to Store
 	public addProduct :Product * User ==> ()
@@ -66,6 +78,7 @@ operations
 		products := products union {p}
 	pre u in set managers and not exists product in set products & Product`equals(product, p) 
 	post p in set products;
+	
 		
 	--Removes product from Store				
 	public removeProduct : Product * User ==> ()
@@ -94,7 +107,7 @@ operations
 				if User`equals(manager, m) 
 				then managers := managers \ {manager};
 		)
-	pre o in set managers and exists manager in set managers & User`equals(manager, m)
+	pre User`equals(o,self.owner) and exists manager in set managers & User`equals(manager, m)
 	post not exists manager in set managers & User`equals(manager,m);
 	
 functions
