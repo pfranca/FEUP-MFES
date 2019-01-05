@@ -178,7 +178,7 @@ private testRemoveStoreProductInvalid: () ==> ()
 		--testStoreInvalid();
 		--testBestProductInvalid();
 		--testAddStoreManagersInvalid();
-		 --testRemoveStoreManagersInvalid();
+		--testRemoveStoreManagersInvalid();
 		
 			
 );

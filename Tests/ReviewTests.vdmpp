@@ -17,10 +17,28 @@ private testReviewParams: () ==> ()
 			
 );
 
+
+---------------------- TEST CASES WITH INVALID INPUTS ------------------------
+
+private testReviewParamsInv: () ==> ()
+			testReviewParamsInv() ==
+			(	  --creates a review and verifies the parameters
+			  
+				dcl r : Review := new Review(pedro,"This is a review",5,mk_Review`Date(2019, 01, 50));
+				assert(r.getUser() = pedro);
+				assert(r.getContent() = "This is a review");
+				assert(r.getRating() = 5);
+				assert(r.getReviewDate() = mk_Review`Date(2019, 01, 03));
+			
+);
+
+
 	public runTests: () ==> ()
 		runTests() ==
 		(
 			testReviewParams();
+			-- TEST CASES WITH INVALID INPUTS --
+			testReviewParamsInv();
 			
 );
 functions
