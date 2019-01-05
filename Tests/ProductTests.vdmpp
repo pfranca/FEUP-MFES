@@ -18,7 +18,7 @@ operations
      	 (  --creates a product and verifies the parameters.
    				 dcl iphone : Product := new Product("Iphone",1000);
    				 
-   				 assert(iphone.getProductName() = "Iphone");
+   				 assert(iphone.getName() = "Iphone");
    				 assert(iphone.getProductPrice() = 1000);
    				
                

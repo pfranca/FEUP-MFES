@@ -51,9 +51,9 @@ operations
 			return managers;
 			
 	--Return owner from Store
-	 pure public getOwner: () ==> String
+	 pure public getOwner: () ==> User
 			getOwner() ==
-			return self.owner.User`getUsername();
+			return owner;
 			
 	--Return the best rated product from Store
     pure public getBestProduct: () ==> Product

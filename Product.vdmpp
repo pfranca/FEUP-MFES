@@ -26,8 +26,8 @@ instance variables
 	
 	
 	--Returns name of Product
-	  pure public getProductName: () ==> String
-			getProductName() ==
+	  pure public getName: () ==> String
+			getName() ==
 			return name;
 			
 			--Returns price of Product

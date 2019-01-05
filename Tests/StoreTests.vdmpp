@@ -21,7 +21,7 @@ private testStoreParams: () ==> ()
 				
 				assert(s.getStoreName() = "Apple");
 				assert(s.getStoreAddress() = "Rua Ale 54 Porto");
-				assert(s.getOwner() = "Pedro");
+				assert(s.getOwner() = pedro);
 				assert(s.getProducts() = {});
 			  assert(s.getManagers() = {pedro});
 		
@@ -107,7 +107,7 @@ private testStoreInvalid: () ==> ()
 			 
 				dcl s : Store := new Store(joana,"Apple","Rua Ale 54 Porto");
 		
-				assert(s.getOwner() = "Joana");
+				assert(s.getOwner() = joana);
 							
 );
 
