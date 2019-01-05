@@ -62,6 +62,54 @@ instance variables
 			getRating() ==
 			return rating;
 			
+			-- Returns review before specific Date
+  pure public getReviewBeforeDate: Review`Date  ==> set of Review
+    getReviewBeforeDate(d)  == (
+      
+		( dcl reviewBefore: set of Review :={};
+			for all rev in set reviews do(
+				if (rev.getReviewDate().year < d.year or(rev.getReviewDate().year =d.year and rev.getReviewDate().month < d.month) 
+				or (rev.getReviewDate().year =d.year and rev.getReviewDate().month = d.month and rev.getReviewDate().day <d.day )) 
+				then
+				reviewBefore:= reviewBefore union {rev};
+			);
+			return reviewBefore
+		);
+    )
+		pre reviews <> {};
+		
+				-- Returns review after specific Date
+  pure public getReviewAfterDate: Review`Date  ==> set of Review
+    getReviewAfterDate(d)  == (
+      
+		( dcl reviewAfter: set of Review :={};
+			for all rev in set reviews do(
+				if (rev.getReviewDate().year > d.year or(rev.getReviewDate().year =d.year and rev.getReviewDate().month > d.month) 
+				or (rev.getReviewDate().year =d.year and rev.getReviewDate().month = d.month and rev.getReviewDate().day > d.day )) 
+				then
+				reviewAfter:= reviewAfter union {rev};
+			);
+			return reviewAfter
+		);
+    )
+		pre reviews <> {};
+		
+				-- Returns review for a specific Date
+  pure public getReviewOnDate: Review`Date  ==> set of Review
+    getReviewOnDate(d)  == (
+      
+		( dcl reviewOn: set of Review :={};
+			for all rev in set reviews do(
+				if (rev.getReviewDate() = d) 
+				then
+				reviewOn:= reviewOn union {rev};
+			);
+			return reviewOn
+		);
+    )
+		pre reviews <> {};
+		
+					
 			
 functions
 

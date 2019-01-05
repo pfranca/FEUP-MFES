@@ -8,8 +8,9 @@ instance variables
   miguel : User := new User("Miguel",<Common>,"miguel@gmail.com",965302024);
  -- iphone : Product := new Product("Iphone",1000);
  -- ipad : Product := new Product("Ipad",500);
-  review1: Review := new Review(pedro,"This is a review1",5,mk_Review`Date(2019, 01, 03));
-  review2: Review := new Review(pedro,"This is a review2",3,mk_Review`Date(2019, 01, 03));
+  review1: Review := new Review(pedro,"This is a review1",5,mk_Review`Date(2019, 01, 01));
+  review2: Review := new Review(pedro,"This is a review2",3,mk_Review`Date(2018, 01, 02));
+  review3: Review := new Review(pedro,"This is a review3",3,mk_Review`Date(2018, 01, 03));
    
 operations
     private testProductParams: () ==> ()
@@ -52,6 +53,50 @@ operations
                
       );
       
+         private testProductReviewBeforeDate: () ==> ()
+      testProductReviewBeforeDate() ==
+     	 (   --creates a product, adds reviews to it and checks the reviews created before a specific date. 
+     	 
+   				 dcl iphone : Product := new Product("Iphone",1000);
+   				 
+   			   assert(iphone.getReviews() = {});
+   				 iphone.addReview(review1);
+   				 assert(iphone.getReviewBeforeDate(mk_Review`Date(2019, 01, 03)) = {review1});
+   				 
+               
+      );
+      
+           private testProductReviewAfterDate: () ==> ()
+      testProductReviewAfterDate() ==
+     	 (   --creates a product, adds reviews to it and checks the reviews created after a specific date. 
+     	 
+   				 dcl iphone : Product := new Product("Iphone",1000);
+   				 
+   			   assert(iphone.getReviews() = {});
+   				 iphone.addReview(review1);
+   				 iphone.addReview(review2);
+   				 iphone.addReview(review3);
+   				 assert(iphone.getReviews() = {review1,review2,review3});
+   				 assert(iphone.getReviewAfterDate(mk_Review`Date(2017, 01, 02)) = {review1,review2,review3});
+   				 
+               
+      );
+      
+      
+         private testProductReviewOnDate: () ==> ()
+      testProductReviewOnDate() ==
+     	 (   --creates a product, adds reviews to it and checks the reviews created on a specific date. 
+     	 
+   				 dcl iphone : Product := new Product("Iphone",1000);
+   				 
+   			   assert(iphone.getReviews() = {});
+   				 iphone.addReview(review2);
+   				 assert(iphone.getReviewOnDate(mk_Review`Date(2018, 01, 02)) = {review2});
+   				 
+               
+      );
+      
+      
       private testProductEquality: () ==> ()
       testProductEquality() ==
      	 (   --creates 2 products with the same name and checks equality
@@ -63,13 +108,68 @@ operations
          
       );
       
+     
+      
+--------------------------- TEST CASES WITH INVALID INPUTS -------------------------------------------
+
+   private testProductReviewBeforeDateInvalid: () ==> ()
+      testProductReviewBeforeDateInvalid() ==
+     	 (   --creates a product, adds reviews to it and checks the reviews created before a specific date failing. 
+     	 
+   				 dcl iphone : Product := new Product("Iphone",1000);
+   				 
+   			   assert(iphone.getReviews() = {});
+   				 iphone.addReview(review1);
+   				 assert(iphone.getReviewBeforeDate(mk_Review`Date(2015, 01, 03)) = {review1});
+   				 
+               
+      );
+      
+        private testProductReviewAfterDateInvalid: () ==> ()
+      testProductReviewAfterDateInvalid() ==
+     	 (   --creates a product, adds reviews to it and checks the reviews created before a specific date failing. 
+     	 
+   				 dcl iphone : Product := new Product("Iphone",1000);
+   				 
+   			   assert(iphone.getReviews() = {});
+   				 iphone.addReview(review1);
+   				 iphone.addReview(review2);
+   				 assert(iphone.getReviews() = {review1,review2});
+   				 assert(iphone.getReviewAfterDate(mk_Review`Date(2019, 01, 03)) = {review1});
+   				 
+               
+      );
+      
+        private testProductReviewOnDateInvalid: () ==> ()
+      testProductReviewOnDateInvalid() ==
+     	 (   --creates a product, adds reviews to it and checks the reviews created before a specific date failing. 
+     	 
+   				 dcl iphone : Product := new Product("Iphone",1000);
+   				 
+   			   assert(iphone.getReviews() = {});
+   				 iphone.addReview(review1);
+   				 iphone.addReview(review2);
+   				  iphone.addReview(review3);
+   				 assert(iphone.getReviews() = {review1,review2,review3});
+   				 assert(iphone.getReviewOnDate(mk_Review`Date(2019, 01, 03)) = {review3});
+   				 
+               
+      );
+      
   public runTests: () ==> ()
 		runTests() ==
 		(
 			testProductParams();
 			testProductReview();
 			testProductRating();
-			testProductEquality();
+			testProductReviewBeforeDate();
+			testProductReviewAfterDate();
+			testProductReviewOnDate();
+		  testProductEquality();
+		-- TEST CASES WITH INVALID INPUTS --
+		--testProductReviewBeforeDateInvalid();
+		--testProductReviewAfterDateInvalid();
+		--testProductReviewOn()DateInvalid;
 			
 );
 
